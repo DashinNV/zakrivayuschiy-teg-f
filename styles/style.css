@@ -14,14 +14,14 @@
 .header {
   display: flex;
   flex-direction: column;
-  margin: 102px auto 104px auto;
+  margin: 102px auto 105px auto;
   font-family: var(--accent-font-family);
   align-items: center;
   border: 2px solid var(--accent-color);
   text-align: center;
   background-color: var(--background-color);
   max-width: 700px;
-  min-height: 368px;
+  min-height: 364px;
 }
 
 .header__title {
@@ -69,6 +69,7 @@
 .theme-menu__button:disabled::before {
   content: "▶";
   position: absolute;
+  left: -15px;
   opacity: 0.6;
   animation: switch-moving 0.5s infinite ease-in-out alternate;
 }
@@ -83,6 +84,11 @@
   opacity: 0.6;
 }
 
+
+.theme-menu__button:focus-visible::after {
+  transform: scaleX(1);
+}
+
 .theme-menu__button::after {
   content: "";
   position: absolute;
@@ -90,11 +96,11 @@
   left: 0;
   width: 100%;
   block-size: 2px;
-  background-color: var(--accent-color);
+  background-color: var(--accent-color, #000000);
   transition: 0.3s ease;
   transform-origin: center left;
-  scale: 0;
-}
+  transform: scaleX(0);
+} 
 
 .content__post {
   display: flex;
@@ -147,20 +153,20 @@
   opacity: 0.5;
   color: var(--accent-color);
   line-height: normal;
-  text-shadow: -1px 0 var(--accent-color),
-    0 1px var(--accent-color), 1px 0 var(--accent-color),
-    0 -1px var(--accent-color);
+  text-shadow: -1px 0 var(--background-color),
+    0 1px var(--background-color), 1px 0 var(--background-color),
+    0 -1px var(--background-color);
   mix-blend-mode: hard-light;
 }
 
 @supports (
   (text-stroke: 1px var(--background-color)) or
-    (-webkit-text-stroke: 1px var(--background-color:))
+    (-webkit-text-stroke: 1px var(--background-color))
 ) {
   .card__poster-label {
     text-shadow: none;
-    text-stroke: 1px var(--background-color:);
-    -webkit-text-stroke: 1px var(--background-color:);
+    text-stroke: 1px var(--background-color);
+    -webkit-text-stroke: 1px var(--background-color);
   }
 }
 
@@ -209,7 +215,7 @@
   padding: 9px 17px;
   color: var(--accent-color);
   font-family: var(--accent-font-family);
-  background: var(--background-color:);
+  background: var(--background-color);
   cursor: pointer;
 }
 
@@ -314,12 +320,12 @@
   width: clamp(341px, 50%, 357px);
   border: 2px solid var(--accent-color);
   padding: 31.5px 32.5px 30.5px 26px;
-  overflow: hidden;
   color: var(--accent-color);
   font-family: var(--accent-font-family);
   font-size: 14px;
   text-transform: uppercase;
-  background: var(--background-color:);
+  background: var(--background-color);
+  overflow-x: hidden;
 }
 
 dialog[open] {
@@ -344,7 +350,7 @@ dialog[open] {
 .dialog__save-icon {
   fill: var(--btn-text-color);
   height: 39px;
-  width: 39px;
+  width: 80px;
   mix-blend-mode: difference;
 }
 
@@ -353,7 +359,7 @@ dialog[open] {
   font-size: 14px;
   line-height: 150%;
   text-transform: uppercase;
-  max-height: 234px;
+  /* max-height: 234px; */
 }
 
 .dialog__close-button {
@@ -370,7 +376,7 @@ dialog[open] {
 @media (width <= 376px) {
   .header {
     margin: 100px auto 100px auto;
-    min-width: 326px;
+    min-height: 326px;
   }
 
   .header__title {
@@ -383,8 +389,8 @@ dialog[open] {
     justify-content: center;
     align-items: center;
     gap: 8px;
-    height: 306px;
-    width: 80px;
+    height: 80px;
+    width: 306px;
   }
 
   .save-icon {
@@ -393,6 +399,6 @@ dialog[open] {
   }
 
   .dialog__text {
-    max-height: 198px;
+    /* max-height: 198px; */
   }
 }
