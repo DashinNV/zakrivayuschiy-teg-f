@@ -165,8 +165,8 @@
 ) {
   .card__poster-label {
     text-shadow: none;
-    text-stroke: 1px var(--background-color);
     -webkit-text-stroke: 1px var(--background-color);
+    text-stroke: 1px var(--background-color);
   }
 }
 
@@ -325,7 +325,6 @@
   font-size: 14px;
   text-transform: uppercase;
   background: var(--background-color);
-  overflow-x: hidden;
 }
 
 dialog[open] {
@@ -370,6 +369,7 @@ dialog[open] {
   text-transform: uppercase;
   cursor: pointer;
   inline-size: 293px;
+  /* width: clamp(257px, 50%, 293px); */
   block-size: 38px;
 }
 
@@ -381,6 +381,10 @@ dialog[open] {
 
   .header__title {
     padding-top: 120px;
+  }
+
+  .card__poster-label {
+    right: 13px;
   }
 
   .save-button {
@@ -398,7 +402,7 @@ dialog[open] {
     width: 28px;
   }
 
-  .dialog__text {
-    /* max-height: 198px; */
+    .dialog__close-button {
+    width:257px;
   }
 }
